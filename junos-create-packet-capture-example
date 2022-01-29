@@ -1,0 +1,11 @@
+This configurations will create pcap file at /var/tmp location.
+
+
+set forwarding-options packet-capture file filename CAPTURE 
+set forwarding-options packet-capture maximum-capture-size 1500
+set firewall filter PCAP term 1 from destination-address 10.34.9.70
+set firewall filter PCAP term 1 then sample
+set firewall filter PCAP term 1 then accept
+set firewall filter PCAP term all-traffic then accep
+set interfaces reth0  unit 0 family inet filter output PCAP
+set interfaces reth0  unit 0 family inet filter input PCAP
