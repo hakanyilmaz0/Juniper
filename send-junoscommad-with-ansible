@@ -1,0 +1,16 @@
+
+---
+
+- name: Switch Konfigurasyonlari
+  hosts: PSM
+  roles :
+    - Juniper.junos
+  connection: local
+  gather_facts: no
+
+  tasks:
+
+    - name: load configuration into device
+      junos_command:
+         commands:
+         - request system configuration rescue save
