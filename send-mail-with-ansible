@@ -1,0 +1,13 @@
+- name: Mail Bilgilendirme
+  hosts: localhost
+  tasks:
+    - name: Mail
+      mail:
+       host: smtp.gmail.com
+       port: 587
+       username: xxx@gmail.com
+       password: yyy
+       to: Mikronet  <xxxx@xxx.net>,<xxx@xxx.net>,<xxx@mikronet.net>
+       subject: Ansible Raporu
+       body: "{{ lookup('file', '/var/log/ansible/ansible.log') }}"
+       secure: starttls
