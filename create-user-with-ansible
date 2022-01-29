@@ -1,0 +1,17 @@
+---
+
+- name: Switch Konfigurasyonlari
+  hosts: 10.25.100.11
+  roles :
+    - Juniper.junos
+  connection: local
+  gather_facts: no
+
+  tasks:
+
+    - name: New user create
+      junos_user:
+        name: user
+        role: super-user
+        encrypted_password: "{{ '5sd5sd5' | password_hash('sha512') }}"
+        state: present
