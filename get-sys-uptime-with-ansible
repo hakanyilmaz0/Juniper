@@ -1,0 +1,19 @@
+---
+
+- name: Switch Konfigurasyonlari
+  hosts: PSM
+  roles :
+    - Juniper.junos
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - name: System uptime
+      juniper_junos_command:
+        commands:
+          - "show system uptime"
+
+      register: result
+    - name: Sonuclar
+      debug:
+       var: result
