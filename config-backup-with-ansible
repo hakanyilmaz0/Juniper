@@ -1,0 +1,13 @@
+- name: Switch Konfigurasyonlari
+  hosts: PSM
+  roles :
+    - Juniper.junos
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - name: Konfigurasyonu Yedekleme İslemi
+      juniper_junos_command:
+        commands:
+          - "show configuration  |display set"
+        dest: "/ansible_otomasyon/junos_switch_backups/{{ inventory_hostname }}-config.cfg"
